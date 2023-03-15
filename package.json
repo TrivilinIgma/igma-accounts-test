@@ -1,0 +1,27 @@
+{
+  "name": "igma-accounts-expressjs.nosync",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "nodemon -L index.js localhost 3000",
+    "migrate:dev": "prisma migrate dev",
+    "migrate:deploy": "prisma migrate deploy",
+    "migrate:status": "prisma migrate status",
+    "generate": "prisma generate",
+    "build": "npm run migrate:deploy"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@prisma/client": "^4.11.0",
+    "express": "^4.18.2",
+    "express-validator": "^6.15.0",
+    "mysql2": "^3.2.0",
+    "prisma": "^4.11.0"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.21"
+  }
+}
