@@ -27,9 +27,10 @@ router.post('/',
         }),
         routeErrorHandler
     ],
-    ClientController.createClient
+    ClientController.create
 )
 
-router.get('/findByCpf', [ buildValidator({ param: "cpf", rulesForValidate: [{ rule: "exists", message: "O envio do CPF é obrigatório" }] }), routeErrorHandler ], ClientController.findByCpf)
+router.get('/find-by-cpf', [ buildValidator({ param: "cpf", rulesForValidate: [{ rule: "exists", message: "O envio do CPF é obrigatório" }] }), routeErrorHandler ], ClientController.findByCpf)
+router.get('/', ClientController.index)
 
 module.exports = router

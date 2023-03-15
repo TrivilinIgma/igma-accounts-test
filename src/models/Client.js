@@ -1,6 +1,6 @@
-const NonexistentCpfError = require("../helpers/errors/NonexistentCpfError");
 const PrismaError = require("../helpers/errors/PrismaError");
 const prisma = require("../lib/prisma");
+const prismaPageCalculation = require("../utils/prismaPageCalculation");
 
 class ClientModel {
 
@@ -16,14 +16,22 @@ class ClientModel {
 
     static async findByCpf(cpf) {
         try {
-            const response = await prisma.client.findUnique({
+            return await prisma.client.findUnique({
                 where: { cpf }
             })
+        } catch (error) {
+            throw new PrismaError({ message: error })
+        }
+    }
 
-            if (!response)
-                throw new NonexistentCpfError()
-
-            return response
+    static async listClients({ page, perPage }) {
+        try {
+            console.log("prismaPageCalculation({ page, perPage })")
+            console.log("prismaPageCalculation({ page, perPage })")
+            console.log("prismaPageCalculation({ page, perPage })")
+            console.log("prismaPageCalculation({ page, perPage })")
+            console.log(prismaPageCalculation({ page, perPage }))
+            return await prisma.client.findMany(prismaPageCalculation({ page, perPage }))
         } catch (error) {
             throw new PrismaError({ message: error })
         }
