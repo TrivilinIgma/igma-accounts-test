@@ -9,7 +9,6 @@ Para testar a aplicação, basta seguir os seguintes passos:
 - Clone o repositório para a sua máquina
 - Certifique-se de ter o Docker e o Docker Compose instalados na sua máquina
 - Abra o terminal na pasta do projeto e execute o comando docker-compose up
-- Acesse a aplicação no seu navegador através da url http://localhost:3000
 
 ## Tecnologias utilizadas
 
@@ -45,6 +44,3 @@ Rota responsável por buscar um cliente na base de dados pelo CPF.
 ### GET /clients
 
 Rota responsável por listar todos os clientes cadastrados na base de dados.
-
-
-
