@@ -1,3 +1,5 @@
+const NonexistentCpfError = require("../helpers/errors/NonexistentCpfError");
+const PrismaError = require("../helpers/errors/PrismaError");
 const prisma = require("../lib/prisma");
 
 class ClientModel {
@@ -8,20 +10,22 @@ class ClientModel {
                 data: { name, cpf, birthday },
             })
         } catch (error) {
-            return new Error(error)
+            throw new PrismaError({ message: error })
         }
     }
 
-    // FAZER FIND BY CPF PARA DUAS COISAS
-    // - VALIDAR SE O CPF EXISTE ANTES DE CADASTRAR O USUARIO
-    // - ROTA DE PROCURAR POR CPF
     static async findByCpf(cpf) {
         try {
-            return await prisma.client.findUnique({
+            const response = await prisma.client.findUnique({
                 where: { cpf }
             })
+
+            if (!response)
+                throw new NonexistentCpfError()
+
+            return response
         } catch (error) {
-            return new Error(error)
+            throw new PrismaError({ message: error })
         }
     }
 

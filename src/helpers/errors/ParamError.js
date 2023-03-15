@@ -3,7 +3,7 @@ class ParamError extends Error {
         super();
         this.status = 400;
         this.message = "Houveram um ou mais erros nos dados enviados nesta requisição."
-        this.errorData = errorData
+        this.data = errorData
     }
 }
 

@@ -1,24 +1,24 @@
-const { body } = require('express-validator');
+const { check } = require('express-validator');
 
 const buildValidator = ({
-    param = "",
+    param = null,
     rulesForValidate = [],
     tractiveRules = []
 }) => {
 
-    const bodyParam = body(param)
+    const treatedParameter = check(param)
 
     if (!!tractiveRules.length)
-        tractiveRules.forEach((rule) => bodyParam[rule]())
+        tractiveRules.forEach((rule) => treatedParameter[rule]())
 
     if (!!rulesForValidate.length)
         rulesForValidate.forEach(({ rule, message, ruleParam = null }) => {
-            const mainRule = ruleParam ? bodyParam[rule](ruleParam) : bodyParam[rule]()
+            const mainRule = ruleParam ? treatedParameter[rule](ruleParam) : treatedParameter[rule]()
 
             mainRule.withMessage(message).bail()
         })
 
-    return bodyParam
+    return treatedParameter
 }
 
 module.exports = buildValidator

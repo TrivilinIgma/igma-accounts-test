@@ -4,7 +4,6 @@ const ClientController = require('../controllers/ClientController')
 const { cpfValidator } = require("../validators/cpfDigits");
 const { routeErrorHandler } = require('../utils/routeErrorHandler');
 const buildValidator = require('../utils/buildValidator');
-const { cpfUnique } = require('../validators/cpfUnique');
 
 router.post('/',
     [
@@ -24,12 +23,13 @@ router.post('/',
                 { rule: "isNumeric", message: "Apenas números são permitidos" },
                 { rule: "isLength", ruleParam: { min: 11, max: 11 }, message: "O CPF deve possuir 11 digitos" },
                 { rule: "custom", ruleParam: cpfValidator, message: "O CPF digitado é inválido" },
-                { rule: "custom", ruleParam: cpfUnique, message: "O CPF digitado já está cadastrado" },
             ] 
         }),
         routeErrorHandler
     ],
     ClientController.createClient
 )
+
+router.get('/findByCpf', [ buildValidator({ param: "cpf", rulesForValidate: [{ rule: "exists", message: "O envio do CPF é obrigatório" }] }), routeErrorHandler ], ClientController.findByCpf)
 
 module.exports = router
