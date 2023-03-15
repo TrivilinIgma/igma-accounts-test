@@ -39,7 +39,7 @@ Rota responsável por cadastrar um novo cliente na base de dados.
 
 Rota responsável por buscar um cliente na base de dados pelo CPF.
 
-Query Params
+**Query Params**
 - **cpf**: string - CPF do cliente a ser buscado (somente números)
 
 ### GET /clients
