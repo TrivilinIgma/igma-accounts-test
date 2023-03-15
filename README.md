@@ -11,4 +11,24 @@ Para testar a aplicação, basta seguir os seguintes passos:
 - Abra o terminal na pasta do projeto e execute o comando docker-compose up
 - Acesse a aplicação no seu navegador através da url http://localhost:3000
 
-## 
+## Tecnologias utilizadas
+
+As tecnologias utilizadas neste projeto são:
+
+- ExpressJS: um framework para criação de aplicações web em Node.js
+- Prisma: um ORM (Object-Relational Mapping) para Node.js e TypeScript
+- MySQL: um sistema de gerenciamento de banco de dados relacional
+- Docker: uma plataforma que permite criar, rodar e gerenciar containers de aplicação de forma isolada
+
+## Rotas do projeto
+
+A aplicação possui as seguintes rotas:
+
+### POST /clients
+
+Rota responsável por cadastrar um novo cliente na base de dados.
+
+**Body**
+```
+
+```
